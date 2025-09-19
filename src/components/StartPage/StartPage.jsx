@@ -32,6 +32,11 @@ const Header = styled.h1`
   font-weight: 700;
   font-size: 40px;
 `;
+
+const Img = styled.img`
+  box-shadow: 0 10px 30px -10px wheat;
+  border-radius: 25px;
+`;
 const StartPage = () => {
   return (
     <Wrapper>
@@ -48,7 +53,7 @@ const StartPage = () => {
           and experiences.
         </p>
       </Intro>
-      <img
+      <Img
         src={
           "https://cdn.shopify.com/s/files/1/0371/1575/6676/files/1.2_b4a078d2-f890-4623-8685-158ad6f93c7f_800x.jpg?v=1704774859"
         }
