@@ -1,6 +1,5 @@
-import styled, { css } from "styled-components";
-import Button from "../Button/Button";
-import Wrapper from "./Wrapper";
+import Button from "../ui/Button/Button";
+import Wrapper from "../ui/Wrapper/Wrapper";
 import Header from "./Header";
 import Quote from "./Quote";
 import Intro from "./Intro";
