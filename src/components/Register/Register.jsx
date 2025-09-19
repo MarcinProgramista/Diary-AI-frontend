@@ -3,6 +3,8 @@ import API_CONFIG from "../../config/api";
 import Wrapper from "../ui/Wrapper/Wrapper";
 import SectionWrapper from "../ui/SectionWrapper/SectionWrapper";
 import Header from "../ui/Header/Header";
+import StyledHrefRegisterLogin from "../ui/StyledHrefRegisterLogin/StyledHrefRegisterLogin";
+import ParagraphError from "../ui/ParagraphError/ParagraphError";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -29,7 +31,7 @@ const Register = () => {
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
-  const [errMsg, setErrMsg] = useState("");
+  const [errMsg, setErrMsg] = useState("dsf");
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
@@ -100,9 +102,17 @@ const Register = () => {
       {success ? (
         <SectionWrapper>
           <Header>Success!</Header>
+          <p>
+            <StyledHrefRegisterLogin href="/login">
+              Sign In
+            </StyledHrefRegisterLogin>
+          </p>
         </SectionWrapper>
       ) : (
         <SectionWrapper>
+          <ParagraphError ref={errRef} $errMsg={errMsg} aria-live="assertive">
+            {errMsg}
+          </ParagraphError>
           <Header>Register</Header>
         </SectionWrapper>
       )}
