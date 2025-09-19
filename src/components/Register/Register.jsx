@@ -5,6 +5,8 @@ import SectionWrapper from "../ui/SectionWrapper/SectionWrapper";
 import Header from "../ui/Header/Header";
 import StyledHrefRegisterLogin from "../ui/StyledHrefRegisterLogin/StyledHrefRegisterLogin";
 import ParagraphError from "../ui/ParagraphError/ParagraphError";
+import FormWrapperRegisterLogin from "../ui/FormWrapperRegisterLogin/FormWrapperRegisterLogin";
+import LabelWrapper from "../ui/LabelWrapper/LabelWrapper";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -31,7 +33,7 @@ const Register = () => {
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
-  const [errMsg, setErrMsg] = useState("dsf");
+  const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
@@ -114,6 +116,9 @@ const Register = () => {
             {errMsg}
           </ParagraphError>
           <Header>Register</Header>
+          <FormWrapperRegisterLogin onSubmit={handleSubmit}>
+            <LabelWrapper htmlFor="username">Username:</LabelWrapper>
+          </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
     </Wrapper>
