@@ -93,7 +93,7 @@ const Register = () => {
     }
   };
 
-  return <Wrapper>Register</Wrapper>;
+  return <Wrapper>{success ? <h1>Success!</h1> : <h1>Register</h1>}</Wrapper>;
 };
 
 export default Register;
