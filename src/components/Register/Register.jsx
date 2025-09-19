@@ -1,4 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import API_CONFIG from "../../config/api";
 import Wrapper from "../ui/Wrapper/Wrapper";
 import SectionWrapper from "../ui/SectionWrapper/SectionWrapper";
@@ -7,6 +12,9 @@ import StyledHrefRegisterLogin from "../ui/StyledHrefRegisterLogin/StyledHrefReg
 import ParagraphError from "../ui/ParagraphError/ParagraphError";
 import FormWrapperRegisterLogin from "../ui/FormWrapperRegisterLogin/FormWrapperRegisterLogin";
 import LabelWrapper from "../ui/LabelWrapper/LabelWrapper";
+import StyledFontAwesomeIconHideName from "../ui/StyledFontAwesomeIconHideName/StyledFontAwesomeIconHideName";
+import StyledFontAwesomeIconInvalidName from "../ui/StyledFontAwesomeIconInvalidName/StyledFontAwesomeIconInvalidName";
+import StyledInput from "../ui/StyledInput/StyledInput";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -117,7 +125,32 @@ const Register = () => {
           </ParagraphError>
           <Header>Register</Header>
           <FormWrapperRegisterLogin onSubmit={handleSubmit}>
-            <LabelWrapper htmlFor="username">Username:</LabelWrapper>
+            <LabelWrapper htmlFor="username">
+              Username:
+              <StyledFontAwesomeIconHideName
+                icon={faCheck}
+                $validName={validName}
+              />
+              <StyledFontAwesomeIconInvalidName
+                icon={faTimes}
+                $validName={validName}
+                $user={user}
+              />
+            </LabelWrapper>
+            <StyledInput
+              type="text"
+              id="username"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setUser(e.target.value)}
+              value={user}
+              required
+              aria-invalid={validName ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setUserFocus(true)}
+              onBlur={() => setUserFocus(false)}
+              placeholder="Put name .."
+            />
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
