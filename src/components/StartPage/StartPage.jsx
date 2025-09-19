@@ -1,42 +1,11 @@
-import React from "react";
 import styled, { css } from "styled-components";
-import StyledButtonRegisterLogin from "../Button/Button";
 import Button from "../Button/Button";
+import Wrapper from "./Wrapper";
+import Header from "./Header";
+import Quote from "./Quote";
+import Intro from "./Intro";
+import Img from "./Img";
 
-const Wrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-`;
-
-const Quote = styled.div`
-  font-style: italic;
-  font-size: 1.6em;
-  font-family: "Dancing Script", cursive;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-`;
-const Intro = styled.div`
-  margin-top: px;
-  font-size: 1.6em;
-  font-family: "Dancing Script", cursive;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-`;
-const Header = styled.h1`
-  font-family: "Dancing Script", cursive;
-  font-weight: 700;
-  font-size: 40px;
-`;
-
-const Img = styled.img`
-  box-shadow: 0 10px 30px -10px wheat;
-  border-radius: 25px;
-`;
 const StartPage = () => {
   return (
     <Wrapper>
@@ -64,7 +33,6 @@ const StartPage = () => {
       <a href="/login">
         <Button $login>Log in</Button>
       </a>
-      {/* <a href="/register">Register</a> */}
     </Wrapper>
   );
 };
