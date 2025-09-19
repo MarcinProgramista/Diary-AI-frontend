@@ -15,6 +15,8 @@ import LabelWrapper from "../ui/LabelWrapper/LabelWrapper";
 import StyledFontAwesomeIconHideName from "../ui/StyledFontAwesomeIconHideName/StyledFontAwesomeIconHideName";
 import StyledFontAwesomeIconInvalidName from "../ui/StyledFontAwesomeIconInvalidName/StyledFontAwesomeIconInvalidName";
 import StyledInput from "../ui/StyledInput/StyledInput";
+import ParagraphUser from "../ui/ParagraphUser/ParagraphUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -151,6 +153,19 @@ const Register = () => {
               onBlur={() => setUserFocus(false)}
               placeholder="Put name .."
             />
+            <ParagraphUser
+              id="uidnote"
+              $userFocus={userFocus}
+              $user={user}
+              $validName={validName}
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              4 to 24 characters.
+              <br />
+              Must begin with a letter.
+              <br />
+              Letters, numbers, underscores, hyphens allowed.
+            </ParagraphUser>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
