@@ -166,6 +166,7 @@ const Register = () => {
               <br />
               Letters, numbers, underscores, hyphens allowed.
             </ParagraphUser>
+            <LabelWrapper htmlFor="email">Email:</LabelWrapper>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
