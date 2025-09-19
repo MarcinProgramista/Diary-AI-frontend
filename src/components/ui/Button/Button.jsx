@@ -8,9 +8,9 @@ const Button = styled.button`
   color: black;
   border: none;
   border-radius: 50px;
-  font-family: "Montserrat";
+  font-family: "Dancing Script";
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   width: ${({ $small }) => ($small ? "200px" : "300px")};
 

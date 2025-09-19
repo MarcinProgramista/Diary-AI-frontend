@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import API_CONFIG from "../../config/api";
 import Wrapper from "../ui/Wrapper/Wrapper";
+import SectionWrapper from "../ui/SectionWrapper/SectionWrapper";
+import Header from "../ui/Header/Header";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -93,7 +95,19 @@ const Register = () => {
     }
   };
 
-  return <Wrapper>{success ? <h1>Success!</h1> : <h1>Register</h1>}</Wrapper>;
+  return (
+    <Wrapper>
+      {success ? (
+        <SectionWrapper>
+          <Header>Success!</Header>
+        </SectionWrapper>
+      ) : (
+        <SectionWrapper>
+          <Header>Register</Header>
+        </SectionWrapper>
+      )}
+    </Wrapper>
+  );
 };
 
 export default Register;

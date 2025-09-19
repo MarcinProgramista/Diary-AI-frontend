@@ -1,6 +1,6 @@
 import Button from "../ui/Button/Button";
 import Wrapper from "../ui/Wrapper/Wrapper";
-import Header from "./Header";
+import Header from "../ui/Header/Header";
 import Quote from "./Quote";
 import Intro from "./Intro";
 import Img from "./Img";
