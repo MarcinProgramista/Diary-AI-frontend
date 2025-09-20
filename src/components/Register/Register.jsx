@@ -178,6 +178,20 @@ const Register = () => {
                 $validEmail={validEmail}
                 $email={email}
               />
+              <StyledInput
+                type="email"
+                id="email"
+                ref={emailRef}
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+                aria-invalid={validEmail ? "false" : "true"}
+                aria-describedby="uidnote"
+                onFocus={() => setEmailFocus(true)}
+                onBlur={() => setEmailFocus(false)}
+                placeholder="Put name .."
+              />
             </LabelWrapper>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
