@@ -17,6 +17,7 @@ import StyledFontAwesomeIconInvalidName from "../ui/StyledFontAwesomeIconInvalid
 import StyledInput from "../ui/StyledInput/StyledInput";
 import ParagraphUser from "../ui/ParagraphUser/ParagraphUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import StyledFontAwesomeIconHideEmail from "../ui/StyledFontAwesomeIconHideEmail/StyledFontAwesomeIconHideEmail";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -166,7 +167,13 @@ const Register = () => {
               <br />
               Letters, numbers, underscores, hyphens allowed.
             </ParagraphUser>
-            <LabelWrapper htmlFor="email">Email:</LabelWrapper>
+            <LabelWrapper htmlFor="email">
+              Email:
+              <StyledFontAwesomeIconHideEmail
+                icon={faCheck}
+                $validEmail={validEmail}
+              />
+            </LabelWrapper>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
