@@ -18,7 +18,7 @@ import StyledInput from "../ui/StyledInput/StyledInput";
 import ParagraphUser from "../ui/ParagraphUser/ParagraphUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StyledFontAwesomeIconHideEmail from "../ui/StyledFontAwesomeIconHideEmail/StyledFontAwesomeIconHideEmail";
-
+import StyledFontAwesomeIconInvalidEmail from "../ui/StyledFontAwesomeIconInvalidEmail/StyledFontAwesomeIconInvalidEmail";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -172,6 +172,11 @@ const Register = () => {
               <StyledFontAwesomeIconHideEmail
                 icon={faCheck}
                 $validEmail={validEmail}
+              />
+              <StyledFontAwesomeIconInvalidEmail
+                icon={faTimes}
+                $validEmail={validEmail}
+                $email={email}
               />
             </LabelWrapper>
           </FormWrapperRegisterLogin>
