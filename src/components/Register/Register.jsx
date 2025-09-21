@@ -23,6 +23,7 @@ import ParagraphEmail from "../ui/ParagraphEmail/ParagraphEmail";
 import StyledFontAwesomeIconHidePassword from "../ui/StyledFontAwesomeIconHidePassword/StyledFontAwesomeIconHidePassword";
 import StyledFontAwesomeIconInvalidPassword from "../ui/StyledFontAwesomeIconInvalidPassword/StyledFontAwesomeIconInvalidPassword";
 import ParagraphPassword from "../ui/ParagraphPassword/ParagraphPassword";
+import StyledFontAwesomeIconHidePasswordConfirm from "../ui/StyledFontAwesomeIconHidePasswordConfirm/StyledFontAwesomeIconHidePasswordConfirm";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -260,7 +261,14 @@ const Register = () => {
               <span aria-label="dollar sign">$</span>{" "}
               <span aria-label="percent">%</span>
             </ParagraphPassword>
-            <LabelWrapper htmlFor="confirm_pwd">Confirm Password:</LabelWrapper>
+            <LabelWrapper htmlFor="confirm_pwd">
+              Confirm Password:
+              <StyledFontAwesomeIconHidePasswordConfirm
+                icon={faCheck}
+                $validMatch={validMatch}
+                $matchPwd={matchPwd}
+              />
+            </LabelWrapper>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
