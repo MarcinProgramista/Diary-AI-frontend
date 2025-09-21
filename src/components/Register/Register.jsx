@@ -28,7 +28,7 @@ import StyledFontAwesomeIconInvalidPasswordConfirm from "../ui/StyledFontAwesome
 import ParagraphPasswordConfrim from "../ui/ParagraphPasswordConfrim/ParagraphPasswordConfrim";
 import Button from "../ui/Button/Button";
 import axios from "axios";
-
+import StyledSpanRegisterLogin from "../ui/StyledSpanRegisterLogin/StyledSpanRegisterLogin";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -308,6 +308,15 @@ const Register = () => {
               Sing up
             </Button>
           </FormWrapperRegisterLogin>
+          <p>
+            Already registered?
+            <br />
+            <StyledSpanRegisterLogin>
+              <StyledHrefRegisterLogin href="/login">
+                Log in
+              </StyledHrefRegisterLogin>
+            </StyledSpanRegisterLogin>
+          </p>
         </SectionWrapper>
       )}
     </Wrapper>
