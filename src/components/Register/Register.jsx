@@ -220,6 +220,11 @@ const Register = () => {
                 icon={faCheck}
                 $validPwd={validPwd}
               />
+              <StyledFontAwesomeIconInvalidPassword
+                icon={faTimes}
+                $validPwd={validPwd}
+                $pwd={pwd}
+              />
             </LabelWrapper>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
