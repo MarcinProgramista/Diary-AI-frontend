@@ -274,6 +274,18 @@ const Register = () => {
                 $matchPwd={matchPwd}
               />
             </LabelWrapper>
+            <StyledInput
+              type="password"
+              id="confirm_pwd"
+              onChange={(e) => setMatchPwd(e.target.value)}
+              value={matchPwd}
+              required
+              aria-invalid={validMatch ? "false" : "true"}
+              aria-describedby="confirmnote"
+              onFocus={() => setMatchFocus(true)}
+              onBlur={() => setMatchFocus(false)}
+              placeholder="Put the same password like above.. "
+            />
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
