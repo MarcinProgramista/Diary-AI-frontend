@@ -19,6 +19,8 @@ import ParagraphUser from "../ui/ParagraphUser/ParagraphUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StyledFontAwesomeIconHideEmail from "../ui/StyledFontAwesomeIconHideEmail/StyledFontAwesomeIconHideEmail";
 import StyledFontAwesomeIconInvalidEmail from "../ui/StyledFontAwesomeIconInvalidEmail/StyledFontAwesomeIconInvalidEmail";
+import ParagraphEmail from "../ui/ParagraphEmail/ParagraphEmail";
+import StyledFontAwesomeIconHidePassword from "../ui/StyledFontAwesomeIconHidePassword/StyledFontAwesomeIconHidePassword";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -178,19 +180,45 @@ const Register = () => {
                 $validEmail={validEmail}
                 $email={email}
               />
-              <StyledInput
-                type="email"
-                id="email"
-                ref={emailRef}
-                autoComplete="off"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
-                aria-invalid={validEmail ? "false" : "true"}
-                aria-describedby="uidnote"
-                onFocus={() => setEmailFocus(true)}
-                onBlur={() => setEmailFocus(false)}
-                placeholder="Put name .."
+            </LabelWrapper>
+            <StyledInput
+              type="email"
+              id="email"
+              ref={emailRef}
+              autoComplete="off"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+              aria-invalid={validEmail ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
+              placeholder="Put email .."
+            />
+            <ParagraphEmail
+              id="uidnote"
+              $emailFocus={emailFocus}
+              $email={email}
+              $validEmail={validEmail}
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              username part of the email, allowing alphanumeric characters and
+              some special characters like ., _, %, +, and -.
+              <br />
+              Must have "@" symbol that separates the username from the domain.
+              <br />
+              Must begin with a letter.
+              <br />
+              Domain part, allowing letters, digits, dots, and hyphens
+              <br />
+              top-level domain (TLD), which must consist of at least 2
+              alphabetic characters.
+            </ParagraphEmail>
+            <LabelWrapper htmlFor="password">
+              Password:
+              <StyledFontAwesomeIconHidePassword
+                icon={faCheck}
+                $validPwd={validPwd}
               />
             </LabelWrapper>
           </FormWrapperRegisterLogin>
