@@ -24,7 +24,7 @@ import StyledFontAwesomeIconHidePassword from "../ui/StyledFontAwesomeIconHidePa
 import StyledFontAwesomeIconInvalidPassword from "../ui/StyledFontAwesomeIconInvalidPassword/StyledFontAwesomeIconInvalidPassword";
 import ParagraphPassword from "../ui/ParagraphPassword/ParagraphPassword";
 import StyledFontAwesomeIconHidePasswordConfirm from "../ui/StyledFontAwesomeIconHidePasswordConfirm/StyledFontAwesomeIconHidePasswordConfirm";
-
+import StyledFontAwesomeIconInvalidPasswordConfirm from "../ui/StyledFontAwesomeIconInvalidPasswordConfirm/StyledFontAwesomeIconInvalidPasswordConfirm";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -265,6 +265,11 @@ const Register = () => {
               Confirm Password:
               <StyledFontAwesomeIconHidePasswordConfirm
                 icon={faCheck}
+                $validMatch={validMatch}
+                $matchPwd={matchPwd}
+              />
+              <StyledFontAwesomeIconInvalidPasswordConfirm
+                icon={faTimes}
                 $validMatch={validMatch}
                 $matchPwd={matchPwd}
               />
