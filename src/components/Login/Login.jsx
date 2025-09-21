@@ -10,6 +10,8 @@ import WrapperSeparator from "../ui/WrapperSeparator/WrapperSeparator";
 import FormWrapperRegisterLogin from "../ui/FormWrapperRegisterLogin/FormWrapperRegisterLogin";
 import LabelWrapper from "../ui/LabelWrapper/LabelWrapper";
 import StyledInput from "../ui/StyledInput/StyledInput";
+import StyledSpanRegisterLogin from "../ui/StyledSpanRegisterLogin/StyledSpanRegisterLogin";
+import StyledHrefRegisterLogin from "../ui/StyledHrefRegisterLogin/StyledHrefRegisterLogin";
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -59,6 +61,16 @@ const Login = () => {
             placeholder="put password"
           />
         </FormWrapperRegisterLogin>
+        <p>
+          Need account?
+          <br />
+          <StyledSpanRegisterLogin className="line">
+            {/*put router link here*/}
+            <StyledHrefRegisterLogin href="/register">
+              Register
+            </StyledHrefRegisterLogin>
+          </StyledSpanRegisterLogin>
+        </p>
       </SectionWrapper>
     </Wrapper>
   );
