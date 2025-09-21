@@ -1,12 +1,37 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Wrapper from "../ui/Wrapper/Wrapper";
 import SectionWrapper from "../ui/SectionWrapper/SectionWrapper";
+import ParagraphError from "../ui/ParagraphError/ParagraphError";
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
+import Header from "../ui/Header/Header";
 
 const Login = () => {
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const userRef = useRef();
+  const errRef = useRef();
+  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  const controller = new AbortController();
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [email, pwd]);
+
   return (
     <Wrapper>
       <SectionWrapper>
-        <h1>h</h1>
+        <ParagraphError ref={errRef} $errMsg={errMsg} aria-live="assertive">
+          {errMsg}
+        </ParagraphError>
+        <Header>Log in</Header>
       </SectionWrapper>
     </Wrapper>
   );
