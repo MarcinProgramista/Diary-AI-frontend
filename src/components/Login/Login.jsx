@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../ui/Header/Header";
 import WrapperSeparator from "../ui/WrapperSeparator/WrapperSeparator";
+import FormWrapperRegisterLogin from "../ui/FormWrapperRegisterLogin/FormWrapperRegisterLogin";
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -34,6 +35,7 @@ const Login = () => {
         </ParagraphError>
         <Header>Log in</Header>
         <WrapperSeparator />
+        <FormWrapperRegisterLogin></FormWrapperRegisterLogin>
       </SectionWrapper>
     </Wrapper>
   );
