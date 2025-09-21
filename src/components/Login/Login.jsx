@@ -6,6 +6,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../ui/Header/Header";
+import WrapperSeparator from "../ui/WrapperSeparator/WrapperSeparator";
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -32,6 +33,7 @@ const Login = () => {
           {errMsg}
         </ParagraphError>
         <Header>Log in</Header>
+        <WrapperSeparator />
       </SectionWrapper>
     </Wrapper>
   );
