@@ -228,6 +228,18 @@ const Register = () => {
                 $pwd={pwd}
               />
             </LabelWrapper>
+            <StyledInput
+              type="password"
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+              aria-invalid={validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+              placeholder="Put password .."
+            />
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
