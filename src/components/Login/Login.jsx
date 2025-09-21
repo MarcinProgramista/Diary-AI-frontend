@@ -64,7 +64,7 @@ const Login = () => {
       setEmail("");
       setPwd("");
       controller.abort();
-      navigate(from, { replace: true });
+      navigate("/home");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
