@@ -22,6 +22,7 @@ import StyledFontAwesomeIconInvalidEmail from "../ui/StyledFontAwesomeIconInvali
 import ParagraphEmail from "../ui/ParagraphEmail/ParagraphEmail";
 import StyledFontAwesomeIconHidePassword from "../ui/StyledFontAwesomeIconHidePassword/StyledFontAwesomeIconHidePassword";
 import StyledFontAwesomeIconInvalidPassword from "../ui/StyledFontAwesomeIconInvalidPassword/StyledFontAwesomeIconInvalidPassword";
+import ParagraphPassword from "../ui/ParagraphPassword/ParagraphPassword";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -240,6 +241,11 @@ const Register = () => {
               onBlur={() => setPwdFocus(false)}
               placeholder="Put password .."
             />
+            <ParagraphPassword
+              id="pwdnote"
+              $pwdFocus={pwdFocus}
+              $validPwd={validPwd}
+            ></ParagraphPassword>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
