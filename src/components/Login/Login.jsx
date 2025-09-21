@@ -9,6 +9,7 @@ import Header from "../ui/Header/Header";
 import WrapperSeparator from "../ui/WrapperSeparator/WrapperSeparator";
 import FormWrapperRegisterLogin from "../ui/FormWrapperRegisterLogin/FormWrapperRegisterLogin";
 import LabelWrapper from "../ui/LabelWrapper/LabelWrapper";
+import StyledInput from "../ui/StyledInput/StyledInput";
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -38,6 +39,16 @@ const Login = () => {
         <WrapperSeparator />
         <FormWrapperRegisterLogin>
           <LabelWrapper htmlFor="email">Email:</LabelWrapper>
+          <StyledInput
+            type="email"
+            id="email"
+            ref={userRef}
+            autoComplete="off"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+            placeholder="name@example.com"
+          />
         </FormWrapperRegisterLogin>
       </SectionWrapper>
     </Wrapper>
