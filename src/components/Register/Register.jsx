@@ -26,6 +26,8 @@ import ParagraphPassword from "../ui/ParagraphPassword/ParagraphPassword";
 import StyledFontAwesomeIconHidePasswordConfirm from "../ui/StyledFontAwesomeIconHidePasswordConfirm/StyledFontAwesomeIconHidePasswordConfirm";
 import StyledFontAwesomeIconInvalidPasswordConfirm from "../ui/StyledFontAwesomeIconInvalidPasswordConfirm/StyledFontAwesomeIconInvalidPasswordConfirm";
 import ParagraphPasswordConfrim from "../ui/ParagraphPasswordConfrim/ParagraphPasswordConfrim";
+import Button from "../ui/Button/Button";
+import axios from "axios";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -296,6 +298,15 @@ const Register = () => {
               <FontAwesomeIcon icon={faInfoCircle} />
               Must match the first password input field.
             </ParagraphPasswordConfrim>
+            <Button
+              disabled={
+                !validName || !validPwd || !validMatch || !validEmail
+                  ? true
+                  : false
+              }
+            >
+              Sing up
+            </Button>
           </FormWrapperRegisterLogin>
         </SectionWrapper>
       )}
