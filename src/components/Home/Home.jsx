@@ -9,9 +9,49 @@ import LogoutIcon from "../../assets/logout-bracket-svgrepo-com.png";
 import { getCategoryFromPath } from "../../utils/categoryUtils";
 import StyledCategory from "../ui/StyledCategory/StyledCategory";
 import ButtonIcon from "../ui/ButtonIcon/ButtonIcon";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthProvider";
+
 const Home = () => {
+  const { auth, setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [errMsg, setErrMsg] = useState("");
+  const user_id = parseInt(JSON.parse(auth.id));
+  const [categories, setCategories] = useState();
+  const axiosPrivate = useAxiosPrivate();
+  const location = useLocation();
   const categoryName = getCategoryFromPath(location.pathname);
-  console.log(categoryName);
+  //console.log(categoryName);
+  useEffect(() => {
+    let isMounted = true;
+
+    const controller = new AbortController();
+
+    const getCategires = async () => {
+      try {
+        const response = await axiosPrivate.get(
+          `/api/categories/user/${user_id}`,
+          {
+            signal: controller.signal,
+          }
+        );
+
+        isMounted && setCategories(response.data);
+        controller.abort();
+      } catch (err) {
+        console.log(err);
+        navigate("/login", { state: { from: location }, replace: true });
+      }
+    };
+
+    getCategires();
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, [user_id]);
 
   return (
     <StyledNavbar>
