@@ -11,7 +11,7 @@ import StyledCategory from "../ui/StyledCategory/StyledCategory";
 import ButtonIcon from "../ui/ButtonIcon/ButtonIcon";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import StyledCategories from "../ui/StyledCategories/StyledCategories";
 
@@ -61,86 +61,93 @@ const Home = () => {
     navigate("/linkpage");
   };
   return (
-    <StyledNavbar>
-      <StyledParagraph>
-        <StyledLink to="/home">
-          {({ isActive }) => (
-            <StyledParagraph>
-              <ButtonIcon
-                $icon={HomeIcon}
-                $active={isActive}
-                $category="Home"
-              ></ButtonIcon>
+    <>
+      <StyledNavbar>
+        <StyledParagraph>
+          <StyledLink to="/home">
+            {({ isActive }) => (
+              <StyledParagraph>
+                <ButtonIcon
+                  $icon={HomeIcon}
+                  $active={isActive}
+                  $category="Home"
+                ></ButtonIcon>
 
-              <StyledCategory $category="Home" $active={isActive}>
-                Home
-              </StyledCategory>
-            </StyledParagraph>
-          )}
-        </StyledLink>
-      </StyledParagraph>
-      {categories?.length ? (
-        <StyledCategories>
-          {categories.map((category, i) => (
-            <StyledParagraph key={i}>
-              <StyledLink
-                key={i}
-                style={{ textDecoration: "no ne" }}
-                to={`/notes/${category.id}/${category.category}`}
-              >
-                {({ isActive }) => (
-                  <StyledParagraph>
-                    {category.category === "Books" && (
-                      <ButtonIcon
-                        $icon={Books}
-                        $active={isActive}
+                <StyledCategory $category="Home" $active={isActive}>
+                  Home
+                </StyledCategory>
+              </StyledParagraph>
+            )}
+          </StyledLink>
+        </StyledParagraph>
+        {categories?.length ? (
+          <StyledCategories>
+            {categories.map((category, i) => (
+              <StyledParagraph key={i}>
+                <StyledLink
+                  key={i}
+                  style={{ textDecoration: "no ne" }}
+                  to={`/notes/${category.id}/${category.category}`}
+                >
+                  {({ isActive }) => (
+                    <StyledParagraph>
+                      {category.category === "Books" && (
+                        <ButtonIcon
+                          $icon={Books}
+                          $active={isActive}
+                          $category={categoryName}
+                        ></ButtonIcon>
+                      )}
+                      {category.category === "Notes" && (
+                        <ButtonIcon
+                          $icon={Notes}
+                          $active={isActive}
+                          $category={categoryName}
+                        ></ButtonIcon>
+                      )}
+                      {category.category === "Films" && (
+                        <ButtonIcon
+                          $icon={Films}
+                          $active={isActive}
+                          $category={categoryName}
+                        ></ButtonIcon>
+                      )}
+                      <StyledCategory
                         $category={categoryName}
-                      ></ButtonIcon>
-                    )}
-                    {category.category === "Notes" && (
-                      <ButtonIcon
-                        $icon={Notes}
                         $active={isActive}
-                        $category={categoryName}
-                      ></ButtonIcon>
-                    )}
-                    {category.category === "Films" && (
-                      <ButtonIcon
-                        $icon={Films}
-                        $active={isActive}
-                        $category={categoryName}
-                      ></ButtonIcon>
-                    )}
-                    <StyledCategory $category={categoryName} $active={isActive}>
-                      {category.category}
-                    </StyledCategory>
-                  </StyledParagraph>
-                )}
-              </StyledLink>
-            </StyledParagraph>
-          ))}
-        </StyledCategories>
-      ) : (
-        <p>No catgories to display</p>
-      )}
-      <StyledParagraph>
-        <StyledLink $category={categoryName} onClick={logout}>
-          {({ isActive }) => (
-            <StyledParagraph>
-              <ButtonIcon
-                $icon={LogoutIcon}
-                $active={isActive}
-                $category="Logout"
-              ></ButtonIcon>
+                      >
+                        {category.category}
+                      </StyledCategory>
+                    </StyledParagraph>
+                  )}
+                </StyledLink>
+              </StyledParagraph>
+            ))}
+          </StyledCategories>
+        ) : (
+          <p>No catgories to display</p>
+        )}
+        <StyledParagraph>
+          <StyledLink $category={categoryName} onClick={logout}>
+            {({ isActive }) => (
+              <StyledParagraph>
+                <ButtonIcon
+                  $icon={LogoutIcon}
+                  $active={isActive}
+                  $category="Logout"
+                ></ButtonIcon>
 
-              <StyledCategory $category="Logout" $active={isActive}>
-                Log Out
-              </StyledCategory>
-            </StyledParagraph>
-          )}
-        </StyledLink>
-      </StyledParagraph>
-    </StyledNavbar>
+                <StyledCategory $category="Logout" $active={isActive}>
+                  Log Out
+                </StyledCategory>
+              </StyledParagraph>
+            )}
+          </StyledLink>
+        </StyledParagraph>
+      </StyledNavbar>
+
+      <Outlet context={user_id} />
+    </>
   );
 };
 
