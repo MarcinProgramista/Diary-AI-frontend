@@ -13,6 +13,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
+import StyledCategories from "../ui/StyledCategories/StyledCategories";
 
 const Home = () => {
   const { auth, setAuth } = useContext(AuthContext);
@@ -72,6 +73,50 @@ const Home = () => {
           )}
         </StyledLink>
       </StyledParagraph>
+      {categories?.length ? (
+        <StyledCategories>
+          {categories.map((category, i) => (
+            <StyledParagraph key={i}>
+              <StyledLink
+                key={i}
+                style={{ textDecoration: "no ne" }}
+                to={`/notes/${category.id}/${category.category}`}
+              >
+                {({ isActive }) => (
+                  <StyledParagraph>
+                    {category.category === "Books" && (
+                      <ButtonIcon
+                        $icon={Books}
+                        $active={isActive}
+                        $category={categoryName}
+                      ></ButtonIcon>
+                    )}
+                    {category.category === "Notes" && (
+                      <ButtonIcon
+                        $icon={Notes}
+                        $active={isActive}
+                        $category={categoryName}
+                      ></ButtonIcon>
+                    )}
+                    {category.category === "Films" && (
+                      <ButtonIcon
+                        $icon={Films}
+                        $active={isActive}
+                        $category={categoryName}
+                      ></ButtonIcon>
+                    )}
+                    <StyledCategory $category={categoryName} $active={isActive}>
+                      {category.category}
+                    </StyledCategory>
+                  </StyledParagraph>
+                )}
+              </StyledLink>
+            </StyledParagraph>
+          ))}
+        </StyledCategories>
+      ) : (
+        <p>No catgories to display</p>
+      )}
     </StyledNavbar>
   );
 };

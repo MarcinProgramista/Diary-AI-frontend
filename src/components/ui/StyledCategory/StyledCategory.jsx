@@ -8,6 +8,7 @@ const StyledCategory = styled.span`
   margin: 5px;
   padding: 10px;
   border-radius: 25px;
+  font-family: "Dancing Script", cursive;
 
   ${({ $active, $category }) =>
     $active &&
