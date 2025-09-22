@@ -53,7 +53,13 @@ const Home = () => {
       controller.abort();
     };
   }, [user_id]);
-
+  const logout = () => {
+    setAuth({});
+    axios.delete(`http://localhost:3700/api/auth/logout`, {
+      withCredentials: true,
+    });
+    navigate("/linkpage");
+  };
   return (
     <StyledNavbar>
       <StyledParagraph>
@@ -117,6 +123,23 @@ const Home = () => {
       ) : (
         <p>No catgories to display</p>
       )}
+      <StyledParagraph>
+        <StyledLink $category={categoryName} onClick={logout}>
+          {({ isActive }) => (
+            <StyledParagraph>
+              <ButtonIcon
+                $icon={LogoutIcon}
+                $active={isActive}
+                $category="Logout"
+              ></ButtonIcon>
+
+              <StyledCategory $category="Logout" $active={isActive}>
+                Log Out
+              </StyledCategory>
+            </StyledParagraph>
+          )}
+        </StyledLink>
+      </StyledParagraph>
     </StyledNavbar>
   );
 };
