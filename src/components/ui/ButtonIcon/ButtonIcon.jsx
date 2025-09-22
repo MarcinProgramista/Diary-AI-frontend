@@ -1,15 +1,52 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const ButtonIcon = styled.button`
-  width: 67px;
-  height: 67px;
+  width: 60px;
+  height: 60px;
   border-radius: 20px;
-  background-image: url(${({ icon }) => icon});
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: 40%;
-  border: none;
-  background-color: ${({ active }) => (active ? "white" : "transparent")};
+  background-size: 70%;
+  background-image: url(${({ $icon }) => $icon});
+  background-color: white;
+
+  ${({ $active, $category }) =>
+    $active &&
+    $category === "Books" &&
+    css`
+      border: 6px solid hsl(106, 47%, 64%);
+      background-size: 80%;
+      width: 70px;
+      height: 70px;
+    `}
+  ${({ $active, $category }) =>
+    $active &&
+    $category === "Notes" &&
+    css`
+      border: 6px solid #ffd82b;
+      background-size: 80%;
+      width: 70px;
+      height: 70px;
+    `}
+    ${({ $active, $category }) =>
+    $active &&
+    $category === "Films" &&
+    css`
+      border: 8px solid hsl(196, 83%, 75%);
+      background-size: 80%;
+      width: 70px;
+      height: 70px;
+    `}
+
+    ${({ $active, $category }) =>
+    $active &&
+    $category === "Home" &&
+    css`
+      border: 8px solid #ffd82b;
+      background-size: 80%;
+      width: 70px;
+      height: 70px;
+    `}
 `;
 
 export default ButtonIcon;
