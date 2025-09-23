@@ -9,7 +9,7 @@ const StyledTitle = styled.h1`
   padding: 10px;
   margin: 10px;
   //height: 50px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Dancing Script", cursive;
   background-color: hsl(0, 0%, 10%);
   //margin-bottom: 1px;
 

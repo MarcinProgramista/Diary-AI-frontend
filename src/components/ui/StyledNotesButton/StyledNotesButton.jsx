@@ -7,7 +7,7 @@ const StyledNotesButton = styled.button`
   color: black;
   border: none;
   border-radius: 50px;
-  font-family: "Montserrat";
+  font-family: "Dancing Script", cursive;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
