@@ -17,7 +17,7 @@ const Notes = () => {
     }
     return new Date(dateString).toLocaleDateString("pl-PL");
   }, []);
-  return <div></div>;
+  return <></>;
 };
 
 export default Notes;
