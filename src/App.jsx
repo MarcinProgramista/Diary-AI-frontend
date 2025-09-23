@@ -5,6 +5,7 @@ import StartPage from "./components/StartPage/StartPage";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import RequireAuth from "./hooks/RequireAuth";
+import Notes from "./components/Notes/Notes";
 
 function App() {
   return (
@@ -16,18 +17,9 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />}>
-            <Route
-              path="/home/notes/:category_id/Books"
-              element={<h1>Books</h1>}
-            />
-            <Route
-              path="/home/notes/:category_id/Films"
-              element={<h1>Films</h1>}
-            />
-            <Route
-              path="/home/notes/:category_id/Notes"
-              element={<h1>Notes</h1>}
-            />
+            <Route path="/home/notes/:category_id/Books" element={<Notes />} />
+            <Route path="/home/notes/:category_id/Films" element={<Notes />} />
+            <Route path="/home/notes/:category_id/Notes" element={<Notes />} />
           </Route>
         </Route>
         <Route element={<RequireAuth />}></Route>
