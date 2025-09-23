@@ -7,7 +7,7 @@ import StyledButtonIcon from "../ui/StyledButtonIcon/StyledButtonIcon";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import API_CONFIG from "../../config/api";
 import NotesList from "../ui/NotesList/NoteList";
-
+import StyledParagraphInfo from "../ui/StyledParagraphInfo/StyledParagraphInfo";
 const Notes = () => {
   const [notes, setNotes] = useState();
   const [buttonShown, setButtonShown] = useState(false);
@@ -64,6 +64,13 @@ const Notes = () => {
 
   return (
     <>
+      {notes?.length > 0 && (
+        <h4>
+          <StyledParagraphInfo>
+            Number of {categoryName}: {notes.length}
+          </StyledParagraphInfo>
+        </h4>
+      )}
       <WrapperNoets>
         <NotesList></NotesList>
         <StyledButtonIcon
