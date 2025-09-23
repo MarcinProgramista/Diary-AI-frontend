@@ -64,6 +64,9 @@ const NewNoteItem = ({ $category, $buttonShown }) => {
             setContent(event.target.value);
           }}
         />
+        <input type="hidden" name="user_id" value={user_id} />
+        <input type="hidden" name="category_id" value={parseInt(category_id)} />
+        <input type="hidden" name="created" value={currentDate} />
       </WrapperNewNoteItem>
     </form>
   );
