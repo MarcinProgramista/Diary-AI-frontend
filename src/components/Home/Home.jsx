@@ -58,22 +58,22 @@ const Home = () => {
     axios.delete(`http://localhost:3700/api/auth/logout`, {
       withCredentials: true,
     });
-    navigate("/linkpage");
+    navigate("/");
   };
   return (
     <>
       <StyledNavbar>
         <StyledParagraph>
-          <StyledLink to="/home">
+          <StyledLink $category={categoryName} to="/home">
             {({ isActive }) => (
               <StyledParagraph>
                 <ButtonIcon
                   $icon={HomeIcon}
                   $active={isActive}
-                  $category="Home"
+                  $category={categoryName}
                 ></ButtonIcon>
 
-                <StyledCategory $category="Home" $active={isActive}>
+                <StyledCategory $category={categoryName} $active={isActive}>
                   Home
                 </StyledCategory>
               </StyledParagraph>
@@ -87,7 +87,7 @@ const Home = () => {
                 <StyledLink
                   key={i}
                   style={{ textDecoration: "no ne" }}
-                  to={`/notes/${category.id}/${category.category}`}
+                  to={`/home/notes/${category.id}/${category.category}`}
                 >
                   {({ isActive }) => (
                     <StyledParagraph>
@@ -134,7 +134,7 @@ const Home = () => {
                 <ButtonIcon
                   $icon={LogoutIcon}
                   $active={isActive}
-                  $category="Logout"
+                  $category={categoryName}
                 ></ButtonIcon>
 
                 <StyledCategory $category="Logout" $active={isActive}>
