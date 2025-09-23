@@ -12,6 +12,8 @@ import WrapperNote from "../ui/WrapperNote/WrapperNote";
 import StyledTitle from "../ui/StyledTitle/StyledTitle";
 import WrapperCard from "../ui/WrapperCard/WrapperCard";
 import StyledAvatar from "../ui/StyledAvatar/StyledAvatar";
+import StyledParagraph from "../ui/StyledParagraph/StyledParagraph";
+import StyledNotesButton from "../ui/StyledNotesButton/StyledNotesButton";
 
 const Notes = () => {
   const [notes, setNotes] = useState();
@@ -90,6 +92,20 @@ const Notes = () => {
                     <StyledTitle $category={categoryName}>
                       {note.title}
                     </StyledTitle>
+                    {note?.link && (
+                      <StyledAvatar src={note.link} $category={categoryName} />
+                    )}
+                    <StyledParagraph $category={categoryName}>
+                      Created :
+                      <p>
+                        {note.created.length === 10
+                          ? formatDate(note.created)
+                          : new Date(note.created).toLocaleDateString()}
+                      </p>
+                    </StyledParagraph>
+                    <StyledNotesButton $category={categoryName}>
+                      more details
+                    </StyledNotesButton>
                   </WrapperCard>
                 </NavLink>
               </WrapperNote>
