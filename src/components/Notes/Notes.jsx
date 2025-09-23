@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getCategoryFromPath } from "../../utils/categoryUtils";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import WrapperNoets from "../ui/WrapperNotes/WrapperNotes";
 import plusIcon from "../../assets/plus-svgrepo-com.png";
 import StyledButtonIcon from "../ui/StyledButtonIcon/StyledButtonIcon";
@@ -9,6 +9,7 @@ import API_CONFIG from "../../config/api";
 import NotesList from "../ui/NotesList/NoteList";
 import StyledParagraphInfo from "../ui/StyledParagraphInfo/StyledParagraphInfo";
 import WrapperNote from "../ui/WrapperNote/WrapperNote";
+import StyledTitle from "../ui/StyledTitle/StyledTitle";
 
 const Notes = () => {
   const [notes, setNotes] = useState();
@@ -74,7 +75,23 @@ const Notes = () => {
         </h4>
       )}
       <WrapperNoets>
-        <NotesList></NotesList>
+        <NotesList>
+          {notes?.length > 0 ? (
+            notes.map((note) => (
+              <WrapperNote key={note.id}>
+                <NavLink
+                  style={{ textDecoration: "none" }}
+                  to={`${location.pathname}/note/${note.id}`}
+                  key={note.id}
+                ></NavLink>
+              </WrapperNote>
+            ))
+          ) : (
+            <StyledTitle $category={categoryName}>
+              No notes found this category.
+            </StyledTitle>
+          )}
+        </NotesList>
         <StyledButtonIcon
           $icon={plusIcon}
           $category={categoryName}
