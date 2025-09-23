@@ -79,14 +79,21 @@ const Notes = () => {
       const response = await axiosPrivate.post("/api/notes/add", note);
       setNotes((prevNotes) => [...prevNotes, response.data]);
       setButtonShown(false);
-      navigate(`/notes/${response.data.category_id}/${categoryName}`);
+      navigate(`/home/notes/${response.data.category_id}/${categoryName}`);
     } catch (error) {
       console.error("Error update  note:", error);
       setErrMsg("Failed to add note");
     }
   };
   //console.log(notes);
-
+  const handleDeleteClick = async (id) => {
+    try {
+      await axiosPrivate.delete(`/api/notes/delete/${id}`);
+      setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+    } catch (error) {
+      console.error("Error deleting note:", error);
+    }
+  };
   return (
     <>
       {notes?.length > 0 && (
@@ -126,6 +133,12 @@ const Notes = () => {
                     </StyledNotesButton>
                   </WrapperCard>
                 </NavLink>
+                <StyledNotesButton
+                  onClick={() => handleDeleteClick(note.id)}
+                  $category={categoryName}
+                >
+                  Remove
+                </StyledNotesButton>
               </WrapperNote>
             ))
           ) : (
