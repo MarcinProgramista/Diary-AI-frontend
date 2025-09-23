@@ -4,6 +4,8 @@ import StyledTitle from "../ui/StyledTitle/StyledTitle";
 import { useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import NewItemInput from "../ui/NewItemInput/NewItemInput";
+import StyledTextArea from "../ui/StyledTextArea/StyledTextArea";
+
 const NewNoteItem = ({ $category, $buttonShown }) => {
   const { auth, setAuth } = useContext(AuthContext);
   const [inputTitleValue, setInputTitleValue] = useState("");
@@ -52,6 +54,16 @@ const NewNoteItem = ({ $category, $buttonShown }) => {
             }}
           />
         )}
+        <StyledTextArea
+          as="textarea"
+          $category={$category}
+          placeholder="Description"
+          name="content"
+          value={content}
+          onChange={(event) => {
+            setContent(event.target.value);
+          }}
+        />
       </WrapperNewNoteItem>
     </form>
   );
