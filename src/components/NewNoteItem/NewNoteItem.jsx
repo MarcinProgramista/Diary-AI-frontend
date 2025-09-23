@@ -7,7 +7,7 @@ import NewItemInput from "../ui/NewItemInput/NewItemInput";
 import StyledTextArea from "../ui/StyledTextArea/StyledTextArea";
 import StyledNotesButton from "../ui/StyledNotesButton/StyledNotesButton";
 
-const NewNoteItem = ({ $category, $buttonShown }) => {
+const NewNoteItem = ({ $category, $buttonShown, onNotesSubmit }) => {
   const { auth, setAuth } = useContext(AuthContext);
   const [inputTitleValue, setInputTitleValue] = useState("");
   const [inputLinkValue, setInputLinkValue] = useState("");
@@ -27,8 +27,25 @@ const NewNoteItem = ({ $category, $buttonShown }) => {
     return day + "." + month + "." + year;
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const note = {
+      title: inputTitleValue.toUpperCase(),
+      link: inputLinkValue,
+      content: content,
+      user_id: userId,
+      category_id: categoryId,
+      created: currentDate,
+    };
+
+    onNotesSubmit(note);
+    setInputTitleValue("");
+    setInputLinkValue("");
+    setContent("");
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <WrapperNewNoteItem $category={$category} $buttonShown={$buttonShown}>
         <StyledTitle $category={$category} $buttonShown={$buttonShown}>
           Creart new item in {$category}
