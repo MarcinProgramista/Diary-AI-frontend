@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import NewItemInput from "../ui/NewItemInput/NewItemInput";
 import StyledTextArea from "../ui/StyledTextArea/StyledTextArea";
+import StyledNotesButton from "../ui/StyledNotesButton/StyledNotesButton";
 
 const NewNoteItem = ({ $category, $buttonShown }) => {
   const { auth, setAuth } = useContext(AuthContext);
@@ -67,6 +68,9 @@ const NewNoteItem = ({ $category, $buttonShown }) => {
         <input type="hidden" name="user_id" value={user_id} />
         <input type="hidden" name="category_id" value={parseInt(category_id)} />
         <input type="hidden" name="created" value={currentDate} />
+        <StyledNotesButton $small $category={$category}>
+          Add note
+        </StyledNotesButton>
       </WrapperNewNoteItem>
     </form>
   );
