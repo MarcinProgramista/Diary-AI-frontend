@@ -84,7 +84,13 @@ const Notes = () => {
                   style={{ textDecoration: "none" }}
                   to={`${location.pathname}/note/${note.id}`}
                   key={note.id}
-                ></NavLink>
+                >
+                  <WrapperCard key={note.id}>
+                    <StyledTitle $category={categoryName}>
+                      {note.title}
+                    </StyledTitle>
+                  </WrapperCard>
+                </NavLink>
               </WrapperNote>
             ))
           ) : (
