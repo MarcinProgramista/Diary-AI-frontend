@@ -8,6 +8,8 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import API_CONFIG from "../../config/api";
 import NotesList from "../ui/NotesList/NoteList";
 import StyledParagraphInfo from "../ui/StyledParagraphInfo/StyledParagraphInfo";
+import WrapperNote from "../ui/WrapperNote/WrapperNote";
+
 const Notes = () => {
   const [notes, setNotes] = useState();
   const [buttonShown, setButtonShown] = useState(false);
