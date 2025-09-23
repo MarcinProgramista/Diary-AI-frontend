@@ -1,6 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getCategoryFromPath } from "../../utils/categoryUtils";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import WrapperNoets from "../ui/WrapperNotes/WrapperNotes";
 import plusIcon from "../../assets/plus-svgrepo-com.png";
 import StyledButtonIcon from "../ui/StyledButtonIcon/StyledButtonIcon";
@@ -14,6 +20,7 @@ import WrapperCard from "../ui/WrapperCard/WrapperCard";
 import StyledAvatar from "../ui/StyledAvatar/StyledAvatar";
 import StyledParagraph from "../ui/StyledParagraph/StyledParagraph";
 import StyledNotesButton from "../ui/StyledNotesButton/StyledNotesButton";
+import NewNoteItem from "../NewNoteItem/NewNoteItem";
 
 const Notes = () => {
   const [notes, setNotes] = useState();
@@ -67,6 +74,17 @@ const Notes = () => {
     setButtonShown((buttonShown) => !buttonShown);
   }
 
+  const handleSubmitNote = async (note) => {
+    try {
+      const response = await axiosPrivate.post("/api/notes/add", note);
+      setNotes((prevNotes) => [...prevNotes, response.data]);
+      setButtonShown(false);
+      navigate(`/notes/${response.data.category_id}/${categoryName}`);
+    } catch (error) {
+      console.error("Error update  note:", error);
+      setErrMsg("Failed to add note");
+    }
+  };
   //console.log(notes);
 
   return (
@@ -122,6 +140,14 @@ const Notes = () => {
           onClick={toggle}
         ></StyledButtonIcon>
       </WrapperNoets>
+      {buttonShown && (
+        <NewNoteItem
+          $category={categoryName}
+          $buttonShown={buttonShown}
+          onNotesSubmit={handleSubmitNote}
+        />
+      )}
+      <Outlet />
     </>
   );
 };
