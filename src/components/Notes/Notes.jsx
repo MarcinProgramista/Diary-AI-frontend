@@ -11,6 +11,7 @@ import StyledParagraphInfo from "../ui/StyledParagraphInfo/StyledParagraphInfo";
 import WrapperNote from "../ui/WrapperNote/WrapperNote";
 import StyledTitle from "../ui/StyledTitle/StyledTitle";
 import WrapperCard from "../ui/WrapperCard/WrapperCard";
+import StyledAvatar from "../ui/StyledAvatar/StyledAvatar";
 
 const Notes = () => {
   const [notes, setNotes] = useState();
