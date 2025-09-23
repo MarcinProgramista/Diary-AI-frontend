@@ -6,6 +6,7 @@ import plusIcon from "../../assets/plus-svgrepo-com.png";
 import StyledButtonIcon from "../ui/StyledButtonIcon/StyledButtonIcon";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import API_CONFIG from "../../config/api";
+import NotesList from "../ui/NotesList/NoteList";
 
 const Notes = () => {
   const [notes, setNotes] = useState();
@@ -59,11 +60,12 @@ const Notes = () => {
     setButtonShown((buttonShown) => !buttonShown);
   }
 
-  console.log(notes);
+  //console.log(notes);
 
   return (
     <>
       <WrapperNoets>
+        <NotesList></NotesList>
         <StyledButtonIcon
           $icon={plusIcon}
           $category={categoryName}
