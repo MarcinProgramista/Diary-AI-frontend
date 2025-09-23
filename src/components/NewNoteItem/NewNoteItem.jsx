@@ -40,6 +40,18 @@ const NewNoteItem = ({ $category, $buttonShown }) => {
             setInputTitleValue(event.target.value);
           }}
         />
+        {($category === "Films" || $category === "Books") && (
+          <NewItemInput
+            $category={$category}
+            placeholder={`Put link to cover of ${$category}`}
+            name="link"
+            id="link"
+            value={inputLinkValue}
+            onChange={(event) => {
+              setInputLinkValue(event.target.value);
+            }}
+          />
+        )}
       </WrapperNewNoteItem>
     </form>
   );
