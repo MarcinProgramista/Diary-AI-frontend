@@ -8,6 +8,7 @@ import axios from "../../api/axios";
 import API_CONFIG from "../../config/api";
 import WrapperNotesDetails from "../ui/WrapperNotesDetails/WrapperNotesDetails";
 import InnerWrapperNotesDetails from "../ui/InnerWrapperNotesDetails/InnerWrapperNotesDetails";
+import DateNotesDetails from "../ui/DateNotesDetails/DateNotesDetails";
 
 const DetialsNote = () => {
   const [note, setNote] = useState();
@@ -71,6 +72,7 @@ const DetialsNote = () => {
           >
             {note?.title}
           </StyledTitle>
+          <DateNotesDetails>{CDate(note)}</DateNotesDetails>
         </InnerWrapperNotesDetails>
       </WrapperNotesDetails>
     </>
