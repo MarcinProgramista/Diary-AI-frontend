@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import RequireAuth from "./hooks/RequireAuth";
 import Notes from "./components/Notes/Notes";
+import DetialsNote from "./components/DetialsNote/DetialsNote";
 
 function App() {
   return (
@@ -22,7 +23,36 @@ function App() {
             <Route path="/home/notes/:category_id/Notes" element={<Notes />} />
           </Route>
         </Route>
-        <Route element={<RequireAuth />}></Route>
+        <Route element={<RequireAuth />}>
+          <Route
+            path="/home/notes/:category_id/Notes/note/:id"
+            element={
+              <>
+                <Home $active $category="Notes" />
+                <DetialsNote />
+              </>
+            }
+          />
+
+          <Route
+            path="/home/notes/:category_id/Books/note/:id"
+            element={
+              <>
+                <Home $active $category="Books" />
+                <DetialsNote />
+              </>
+            }
+          />
+          <Route
+            path="/notes/:category_id/Films/note/:id"
+            element={
+              <>
+                <Home />
+                <DetialsNote />
+              </>
+            }
+          />
+        </Route>
       </Routes>
     </>
   );
