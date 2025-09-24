@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-
+import { CDate, getCategoryFromPath } from "../../utils/categoryUtils";
 const DetialsNote = () => {
   const [note, setNote] = useState();
   const location = useLocation();
