@@ -5,6 +5,7 @@ const API_CONFIG = {
     REGISTER: "/api/register",
     REFRESH_TOKEN: "/api/auth/refresh_token",
     NOTES: "/api/notes",
+    NOTES_DETAILS: "/api/notes/note",
     CATEGORIES: "/api/categories",
   },
 };

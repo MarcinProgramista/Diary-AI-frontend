@@ -44,7 +44,7 @@ function App() {
             }
           />
           <Route
-            path="/notes/:category_id/Films/note/:id"
+            path="/home/notes/:category_id/Films/note/:id"
             element={
               <>
                 <Home />
