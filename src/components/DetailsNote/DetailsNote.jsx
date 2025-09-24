@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { CDate, getCategoryFromPath } from "../../utils/categoryUtils";
 import StyledTitle from "../ui/StyledTitle/StyledTitle";
@@ -11,6 +11,7 @@ import InnerWrapperNotesDetails from "../ui/InnerWrapperNotesDetails/InnerWrappe
 import DateNotesDetails from "../ui/DateNotesDetails/DateNotesDetails";
 import StyledAvatar from "../ui/StyledAvatar/StyledAvatar";
 import StyledCommentNotes from "../ui/StyledCommentNotes/StyledCommentNotes";
+import StyledNotesButton from "../ui/StyledNotesButton/StyledNotesButton";
 
 const DetialsNote = () => {
   const [note, setNote] = useState();
@@ -100,6 +101,16 @@ const DetialsNote = () => {
               // <StyledComment>{note.content}</StyledComment> <h1>
             )}
           </InnerWrapperNotesDetails>
+          <StyledNotesButton $category={getCategoryFromPath(location.pathname)}>
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to={`/home/notes/${params.category_id}/${getCategoryFromPath(
+                location.pathname
+              )}`}
+            >
+              go back
+            </NavLink>
+          </StyledNotesButton>
         </InnerWrapperNotesDetails>
       </WrapperNotesDetails>
     </>

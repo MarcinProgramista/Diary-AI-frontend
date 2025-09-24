@@ -6,7 +6,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import RequireAuth from "./hooks/RequireAuth";
 import Notes from "./components/Notes/Notes";
-import DetialsNote from "./components/DetialsNote/DetialsNote";
+import DetailsNote from "./components/DetailsNote/DetailsNote";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
             element={
               <>
                 <Home $active $category="Notes" />
-                <DetialsNote />
+                <DetailsNote />
               </>
             }
           />
@@ -39,7 +39,7 @@ function App() {
             element={
               <>
                 <Home $active $category="Books" />
-                <DetialsNote />
+                <DetailsNote />
               </>
             }
           />
@@ -48,7 +48,7 @@ function App() {
             element={
               <>
                 <Home />
-                <DetialsNote />
+                <DetailsNote />
               </>
             }
           />
