@@ -7,6 +7,7 @@ import Spinner from "../ui/Spinner/Spinner";
 import axios from "../../api/axios";
 import API_CONFIG from "../../config/api";
 import WrapperNotesDetails from "../ui/WrapperNotesDetails/WrapperNotesDetails";
+import InnerWrapperNotesDetails from "../ui/InnerWrapperNotesDetails/InnerWrapperNotesDetails";
 
 const DetialsNote = () => {
   const [note, setNote] = useState();
@@ -59,9 +60,20 @@ const DetialsNote = () => {
   }
 
   return (
-    <WrapperNotesDetails>
-      <StyledTitle>{note?.title}</StyledTitle>
-    </WrapperNotesDetails>
+    <>
+      <WrapperNotesDetails $category={getCategoryFromPath(location.pathname)}>
+        <InnerWrapperNotesDetails
+          $category={getCategoryFromPath(location.pathname)}
+        >
+          <StyledTitle
+            $datails
+            $category={getCategoryFromPath(location.pathname)}
+          >
+            {note?.title}
+          </StyledTitle>
+        </InnerWrapperNotesDetails>
+      </WrapperNotesDetails>
+    </>
   );
 };
 
