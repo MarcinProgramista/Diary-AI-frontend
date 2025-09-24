@@ -67,13 +67,9 @@ const Home = () => {
           <StyledLink $category={categoryName} to="/home">
             {({ isActive }) => (
               <StyledParagraph>
-                <ButtonIcon
-                  $icon={HomeIcon}
-                  $active={isActive}
-                  $category={categoryName}
-                ></ButtonIcon>
+                <ButtonIcon $icon={HomeIcon} $active={isActive}></ButtonIcon>
 
-                <StyledCategory $category={categoryName} $active={isActive}>
+                <StyledCategory $category="Home" $active={isActive}>
                   Home
                 </StyledCategory>
               </StyledParagraph>

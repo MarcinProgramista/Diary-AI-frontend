@@ -4,7 +4,7 @@ const StyledCategory = styled.span`
   text-decoration: "";
   font-weight: 600;
   font-size: 22px;
-  background-color: transparent;
+  background-color: "";
   margin: 5px;
   padding: 10px;
   border-radius: 25px;
@@ -39,15 +39,6 @@ const StyledCategory = styled.span`
       text-decoration: "underline";
       font-size: 24px;
       background-color: hsl(196, 83%, 75%);
-    `};
-  ${({ $active, $category }) =>
-    $active &&
-    $category === "Home" &&
-    css`
-      color: black;
-      text-decoration: "underline";
-      font-size: 24px;
-      background-color: #ffd82b;
     `};
 `;
 
