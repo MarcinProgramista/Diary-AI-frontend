@@ -9,6 +9,8 @@ import API_CONFIG from "../../config/api";
 import WrapperNotesDetails from "../ui/WrapperNotesDetails/WrapperNotesDetails";
 import InnerWrapperNotesDetails from "../ui/InnerWrapperNotesDetails/InnerWrapperNotesDetails";
 import DateNotesDetails from "../ui/DateNotesDetails/DateNotesDetails";
+import StyledAvatar from "../ui/StyledAvatar/StyledAvatar";
+import StyledCommentNotes from "../ui/StyledCommentNotes/StyledCommentNotes";
 
 const DetialsNote = () => {
   const [note, setNote] = useState();
@@ -73,6 +75,31 @@ const DetialsNote = () => {
             {note?.title}
           </StyledTitle>
           <DateNotesDetails>{CDate(note)}</DateNotesDetails>
+        </InnerWrapperNotesDetails>
+        <InnerWrapperNotesDetails $flex>
+          <InnerWrapperNotesDetails $row>
+            {getCategoryFromPath(location.pathname) === "Films" && (
+              <StyledAvatar src={note?.link} />
+            )}
+            {getCategoryFromPath(location.pathname) === "Books" && (
+              <StyledAvatar src={note?.link} />
+            )}
+            {getCategoryFromPath(location.pathname) !== "Films" &&
+            getCategoryFromPath(location.pathname) !== "Books" ? (
+              <StyledCommentNotes
+                $category={getCategoryFromPath(location.pathname)}
+              >
+                {note?.content}
+              </StyledCommentNotes>
+            ) : (
+              <StyledCommentNotes
+                $category={getCategoryFromPath(location.pathname)}
+              >
+                {note?.content}
+              </StyledCommentNotes>
+              // <StyledComment>{note.content}</StyledComment> <h1>
+            )}
+          </InnerWrapperNotesDetails>
         </InnerWrapperNotesDetails>
       </WrapperNotesDetails>
     </>

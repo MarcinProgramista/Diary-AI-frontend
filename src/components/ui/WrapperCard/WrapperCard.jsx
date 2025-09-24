@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const WrapperCard = styled.div`
-  width: 300px;
+  width: 350px;
   text-align: center;
 `;
 

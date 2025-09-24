@@ -4,7 +4,7 @@ const StyledCategory = styled.span`
   text-decoration: "";
   font-weight: 600;
   font-size: 22px;
-  background-color: "";
+  background-color: transparent;
   margin: 5px;
   padding: 10px;
   border-radius: 25px;
